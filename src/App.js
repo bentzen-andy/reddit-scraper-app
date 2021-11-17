@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Instructions from "./components/Instructions";
 import SearchBar from "./components/SearchBar";
 import FetchHeatMap from "./http-requests/FetchHeatMap";
+import FetchPopularSearches from "./http-requests/FetchPopularSearches";
 
 const App = () => {
   const [subreddit, setSubreddit] = useState(null);
@@ -18,6 +19,7 @@ const App = () => {
       <Instructions />
       <SearchBar onSubmit={onSubmitHandler} />
       {subreddit && <FetchHeatMap subreddit={subreddit} />}
+      <FetchPopularSearches subreddit={subreddit} />
     </div>
   );
 };
