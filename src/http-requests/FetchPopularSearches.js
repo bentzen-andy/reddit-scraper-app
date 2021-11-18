@@ -10,17 +10,26 @@ const FetchPopularSearches = (props) => {
     setIsLoading(true);
 
     fetch(
-      "https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json",
-      {
-        method: "GET",
-      }
+      "https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json"
     )
       .then((response) => response.json())
       .then((data) => {
-        let arr = [];
+        let popularSearchObject = {};
         for (let key in data) {
-          arr.push(data[key]);
+          if (!popularSearchObject[data[key].subreddit]) {
+            popularSearchObject[data[key].subreddit] = data[key].count;
+          } else {
+            popularSearchObject[data[key].subreddit] =
+              popularSearchObject[data[key].subreddit] + 1;
+          }
         }
+
+        let arr = [];
+        for (let key in popularSearchObject) {
+          arr.push({ subreddit: key, count: popularSearchObject[key] });
+        }
+        arr.sort((a, b) => b.count - a.count);
+
         setPopularSearches(arr);
       })
       .catch((err) => setError("Something went wrong..."));
@@ -36,14 +45,3 @@ const FetchPopularSearches = (props) => {
 };
 
 export default FetchPopularSearches;
-
-// fetch(
-//   "https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json",
-//   {
-//     method: "POST",
-//     body: JSON.stringify({subreddit: "askreddit", count: 3}),
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//   }
-// )

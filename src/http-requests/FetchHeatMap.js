@@ -37,10 +37,27 @@ const FetchHeatMap = (props) => {
         redditData.sort((a, b) => b.upvote_ratio - a.upvote_ratio);
         redditData.sort((a_1, b_1) => parseInt(a_1.hour) - parseInt(b_1.hour));
         redditData.sort((a_2, b_2) => parseInt(a_2.day) - parseInt(b_2.day));
-        setRedditSubmissions(redditData);
+        if (redditData) setRedditSubmissions(redditData);
+        else setRedditSubmissions(null);
       })
       .catch((err) => setError("Something went wrong..."));
   }, [props.subreddit]);
+
+  // send the subreddit search to the sever so we can track popular searches
+  useEffect(() => {
+    if (redditSubmissions) {
+      fetch(
+        "https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json",
+        {
+          method: "POST",
+          body: JSON.stringify({ subreddit: props.subreddit, count: 1 }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+    }
+  }, [props.subreddit, redditSubmissions]);
 
   if (redditSubmissions && redditSubmissions.length === 0)
     return <p>No data... </p>;
