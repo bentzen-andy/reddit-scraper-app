@@ -2,23 +2,23 @@ import React from "react";
 
 const RedditDataList = (props) => {
   let dayHour = {
-    sunday: new Array(24).fill(0),
-    monday: new Array(24).fill(0),
-    tuesday: new Array(24).fill(0),
-    wednesday: new Array(24).fill(0),
-    thursday: new Array(24).fill(0),
-    friday: new Array(24).fill(0),
-    saturday: new Array(24).fill(0),
+    sun: new Array(24).fill(0),
+    mon: new Array(24).fill(0),
+    tue: new Array(24).fill(0),
+    wed: new Array(24).fill(0),
+    thr: new Array(24).fill(0),
+    fri: new Array(24).fill(0),
+    sat: new Array(24).fill(0),
   };
 
   for (const item of props.data) {
-    if (item.day === 0) dayHour.sunday[parseInt(item.hour, 10)]++;
-    if (item.day === 1) dayHour.monday[parseInt(item.hour, 10)]++;
-    if (item.day === 2) dayHour.tuesday[parseInt(item.hour, 10)]++;
-    if (item.day === 3) dayHour.wednesday[parseInt(item.hour, 10)]++;
-    if (item.day === 4) dayHour.thursday[parseInt(item.hour, 10)]++;
-    if (item.day === 5) dayHour.friday[parseInt(item.hour, 10)]++;
-    if (item.day === 6) dayHour.saturday[parseInt(item.hour, 10)]++;
+    if (item.day === 0) dayHour.sun[parseInt(item.hour, 10)]++;
+    if (item.day === 1) dayHour.mon[parseInt(item.hour, 10)]++;
+    if (item.day === 2) dayHour.tue[parseInt(item.hour, 10)]++;
+    if (item.day === 3) dayHour.wed[parseInt(item.hour, 10)]++;
+    if (item.day === 4) dayHour.thr[parseInt(item.hour, 10)]++;
+    if (item.day === 5) dayHour.fri[parseInt(item.hour, 10)]++;
+    if (item.day === 6) dayHour.sat[parseInt(item.hour, 10)]++;
   }
 
   return (
@@ -56,43 +56,43 @@ const RedditDataList = (props) => {
         <tbody>
           <tr>
             <td>Sunday</td>
-            {dayHour.sunday.map((hour) => (
+            {dayHour.sun.map((hour) => (
               <td key={Math.random()}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Monday</td>
-            {dayHour.monday.map((hour) => (
+            {dayHour.mon.map((hour) => (
               <td key={Math.random()}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Tuesday</td>
-            {dayHour.tuesday.map((hour) => (
+            {dayHour.tue.map((hour) => (
               <td key={Math.random()}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Wednesday</td>
-            {dayHour.wednesday.map((hour) => (
+            {dayHour.wed.map((hour) => (
               <td key={Math.random()}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Thursday</td>
-            {dayHour.thursday.map((hour) => (
+            {dayHour.thr.map((hour) => (
               <td key={Math.random()}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Friday</td>
-            {dayHour.friday.map((hour) => (
+            {dayHour.fri.map((hour) => (
               <td key={Math.random()}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Saturday</td>
-            {dayHour.saturday.map((hour) => (
+            {dayHour.sat.map((hour) => (
               <td key={Math.random()}>{hour}</td>
             ))}
           </tr>
