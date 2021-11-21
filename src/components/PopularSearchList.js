@@ -7,9 +7,9 @@ const PopularSearchList = (props) => {
     <React.Fragment>
       <h1>Popular Searches</h1>
 
-      {props.data.map((item) => (
+      {Object.entries(props.data).map((item) => (
         <p key={Math.random()}>
-          {item.subreddit}.....{item.count}
+          {item[0]}.....{item[1]}
         </p>
       ))}
     </React.Fragment>

@@ -14,23 +14,21 @@ const FetchPopularSearches = (props) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        let popularSearchObject = {};
-        for (let key in data) {
-          if (!popularSearchObject[data[key].subreddit]) {
-            popularSearchObject[data[key].subreddit] = data[key].count;
+        let popularSearches = {};
+        Object.entries(data).map((item) => {
+          const currSub = item[1].subreddit;
+          const currCnt = item[1].count;
+
+          if (!popularSearches[currSub]) {
+            popularSearches[currSub] = currCnt;
           } else {
-            popularSearchObject[data[key].subreddit] =
-              popularSearchObject[data[key].subreddit] + 1;
+            popularSearches[currSub]++;
           }
-        }
 
-        let arr = [];
-        for (let key in popularSearchObject) {
-          arr.push({ subreddit: key, count: popularSearchObject[key] });
-        }
-        arr.sort((a, b) => b.count - a.count);
+          return null;
+        });
 
-        setPopularSearches(arr);
+        setPopularSearches(popularSearches);
       })
       .catch((err) => setError("Something went wrong..."));
   }, [props.subreddit]);
