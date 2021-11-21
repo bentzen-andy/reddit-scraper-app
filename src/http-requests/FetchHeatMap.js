@@ -45,7 +45,12 @@ const FetchHeatMap = (props) => {
         if (redditData) setRedditSubmissions(redditData);
         else setRedditSubmissions(null);
       })
-      .catch((err) => setError("Something went wrong..."));
+      .catch((err) => {
+        setError(
+          `Error: No data available for subreddit: "${props.subreddit}"`
+        );
+        setRedditSubmissions(null);
+      });
   }, [props.subreddit]);
 
   // send the subreddit search to the sever so we can track popular searches
