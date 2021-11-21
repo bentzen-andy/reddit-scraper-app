@@ -30,10 +30,14 @@ const FetchHeatMap = (props) => {
             time: postCreationDate
               .toLocaleString(clientLocale, { timeZone: clientTimeZone })
               .split(", ")[1],
-            hour: postCreationDate
-              .toLocaleString(clientLocale, { timeZone: clientTimeZone })
-              .split(", ")[1]
-              .split(":")[0],
+            hour:
+              postCreationDate
+                .toLocaleString(clientLocale, {
+                  timeZone: clientTimeZone,
+                  hour12: false,
+                })
+                .split(", ")[1]
+                .split(":")[0] % 24,
           };
         });
 
