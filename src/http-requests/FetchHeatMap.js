@@ -41,8 +41,6 @@ const FetchHeatMap = (props) => {
         redditData.sort((a_1, b_1) => parseInt(a_1.hour) - parseInt(b_1.hour));
         redditData.sort((a_2, b_2) => parseInt(a_2.day) - parseInt(b_2.day));
 
-        console.log(redditData);
-
         if (redditData) setRedditSubmissions(redditData);
         else setRedditSubmissions(null);
       })
@@ -52,14 +50,12 @@ const FetchHeatMap = (props) => {
   // send the subreddit search to the sever so we can track popular searches
   useEffect(() => {
     if (redditSubmissions) {
-      console.log("POST:");
-      console.log(redditSubmissions[0].subreddit.toLowerCase());
       fetch(
         "https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json",
         {
           method: "POST",
           body: JSON.stringify({
-            subreddit: redditSubmissions[0].subreddit,
+            subreddit: redditSubmissions[0].subreddit.toLowerCase(),
             count: 1,
           }),
           headers: {
