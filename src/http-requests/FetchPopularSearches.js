@@ -6,6 +6,13 @@ const FetchPopularSearches = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  const getHttpResponse = () => {
+    if (!popularSearches) return <p>no data...</p>;
+    if (isLoading) return <p>Loading...</p>;
+    if (error) return <p>Something went wrong...</p>;
+    return <PopularSearchList data={popularSearches} />;
+  };
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -14,6 +21,12 @@ const FetchPopularSearches = (props) => {
     )
       .then((response) => response.json())
       .then((data) => {
+        if (!data) {
+          setPopularSearches({});
+          setIsLoading(false);
+          return;
+        }
+
         let popularSearches = {};
         Object.entries(data).map((item) => {
           const currSub = item[1].subreddit;
@@ -28,18 +41,18 @@ const FetchPopularSearches = (props) => {
           return null;
         });
 
+        setIsLoading(false);
         setPopularSearches(popularSearches);
       })
       .catch((err) => setError("Something went wrong..."));
   }, [props.subreddit]);
 
-  if (popularSearches && popularSearches.length === 0)
-    return <p>No data... </p>;
-  if (popularSearches) return <PopularSearchList data={popularSearches} />;
-  if (error) return <p>{error}</p>;
-  if (isLoading) return <p>Loading... </p>;
-
-  return <p>Something went wrong... </p>;
+  return (
+    <React.Fragment>
+      <h1>Popular Searches</h1>
+      {getHttpResponse()}
+    </React.Fragment>
+  );
 };
 
 export default FetchPopularSearches;
