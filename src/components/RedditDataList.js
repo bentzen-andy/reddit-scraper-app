@@ -13,12 +13,12 @@ const RedditDataList = (props) => {
 
   for (const item of props.data) {
     if (item.day === 0) dayHour.sun[parseInt(item.hour, 10)]++;
-    if (item.day === 1) dayHour.mon[parseInt(item.hour, 10)]++;
-    if (item.day === 2) dayHour.tue[parseInt(item.hour, 10)]++;
-    if (item.day === 3) dayHour.wed[parseInt(item.hour, 10)]++;
-    if (item.day === 4) dayHour.thr[parseInt(item.hour, 10)]++;
-    if (item.day === 5) dayHour.fri[parseInt(item.hour, 10)]++;
-    if (item.day === 6) dayHour.sat[parseInt(item.hour, 10)]++;
+    else if (item.day === 1) dayHour.mon[parseInt(item.hour, 10)]++;
+    else if (item.day === 2) dayHour.tue[parseInt(item.hour, 10)]++;
+    else if (item.day === 3) dayHour.wed[parseInt(item.hour, 10)]++;
+    else if (item.day === 4) dayHour.thr[parseInt(item.hour, 10)]++;
+    else if (item.day === 5) dayHour.fri[parseInt(item.hour, 10)]++;
+    else if (item.day === 6) dayHour.sat[parseInt(item.hour, 10)]++;
   }
 
   return (
@@ -63,37 +63,37 @@ const RedditDataList = (props) => {
           <tr>
             <td>Monday</td>
             {dayHour.mon.map((hour, i) => (
-              <td key={`0-${i}`}>{hour}</td>
+              <td key={`1-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Tuesday</td>
             {dayHour.tue.map((hour, i) => (
-              <td key={`0-${i}`}>{hour}</td>
+              <td key={`2-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Wednesday</td>
             {dayHour.wed.map((hour, i) => (
-              <td key={`0-${i}`}>{hour}</td>
+              <td key={`3-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Thursday</td>
             {dayHour.thr.map((hour, i) => (
-              <td key={`0-${i}`}>{hour}</td>
+              <td key={`4-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Friday</td>
             {dayHour.fri.map((hour, i) => (
-              <td key={`0-${i}`}>{hour}</td>
+              <td key={`5-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Saturday</td>
             {dayHour.sat.map((hour, i) => (
-              <td key={`0-${i}`}>{hour}</td>
+              <td key={`6-${i}`}>{hour}</td>
             ))}
           </tr>
         </tbody>
