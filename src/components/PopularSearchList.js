@@ -8,7 +8,7 @@ const PopularSearchList = (props) => {
       <h1>Popular Searches</h1>
 
       {Object.entries(props.data).map((item) => (
-        <p key={Math.random()}>
+        <p key={item[0]}>
           {item[0]}.....{item[1]}
         </p>
       ))}

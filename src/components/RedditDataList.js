@@ -56,44 +56,44 @@ const RedditDataList = (props) => {
         <tbody>
           <tr>
             <td>Sunday</td>
-            {dayHour.sun.map((hour) => (
-              <td key={Math.random()}>{hour}</td>
+            {dayHour.sun.map((hour, i) => (
+              <td key={`0-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Monday</td>
-            {dayHour.mon.map((hour) => (
-              <td key={Math.random()}>{hour}</td>
+            {dayHour.mon.map((hour, i) => (
+              <td key={`0-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Tuesday</td>
-            {dayHour.tue.map((hour) => (
-              <td key={Math.random()}>{hour}</td>
+            {dayHour.tue.map((hour, i) => (
+              <td key={`0-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Wednesday</td>
-            {dayHour.wed.map((hour) => (
-              <td key={Math.random()}>{hour}</td>
+            {dayHour.wed.map((hour, i) => (
+              <td key={`0-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Thursday</td>
-            {dayHour.thr.map((hour) => (
-              <td key={Math.random()}>{hour}</td>
+            {dayHour.thr.map((hour, i) => (
+              <td key={`0-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Friday</td>
-            {dayHour.fri.map((hour) => (
-              <td key={Math.random()}>{hour}</td>
+            {dayHour.fri.map((hour, i) => (
+              <td key={`0-${i}`}>{hour}</td>
             ))}
           </tr>
           <tr>
             <td>Saturday</td>
-            {dayHour.sat.map((hour) => (
-              <td key={Math.random()}>{hour}</td>
+            {dayHour.sat.map((hour, i) => (
+              <td key={`0-${i}`}>{hour}</td>
             ))}
           </tr>
         </tbody>
