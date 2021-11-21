@@ -6,6 +6,7 @@ const SearchBar = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     props.onSubmit(subreddit);
+    setSubreddit("");
   };
 
   const subredditChangeHandler = (event) => {
@@ -19,6 +20,7 @@ const SearchBar = (props) => {
         type="text"
         id="subreddit"
         name="subreddit"
+        value={subreddit}
         onChange={subredditChangeHandler}
       />
       <button type="submit" value="Submit">
