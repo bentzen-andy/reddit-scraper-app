@@ -4,8 +4,10 @@
   background-color: #6200ee;
   box-shadow: rgba(0, 0, 0, 0.34902) 0px 5px 15px;
   display: flex;
+  position: sticky;
+  top: 0;
+  z-index: 100;
   justify-content: space-between;
-  /* align-items: center; */
   height: 3.5rem;
 }
 .navbar__logo,
