@@ -16,6 +16,12 @@
   border: solid grey 1px;
   border-radius: 4px;
 }
+.searchbar__input:focus {
+  border: solid #6200ee 2px;
+}
+*:focus {
+  outline: none;
+}
 .searchbar__btn {
   display: block;
 }
