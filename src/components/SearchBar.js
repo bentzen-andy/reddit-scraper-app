@@ -7,7 +7,7 @@ const SearchBar = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    props.onSubmit(subreddit);
+    props.onSubmit(subreddit.toLowerCase().trim());
     setSubreddit("");
   };
 
