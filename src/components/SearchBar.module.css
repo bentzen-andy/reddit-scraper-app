@@ -19,9 +19,31 @@
 .searchbar__input:focus {
   border: solid #6200ee 2px;
 }
-*:focus {
-  outline: none;
+
+/* Screen size breakpoints according to freecodecamp.com */
+/* https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/ */
+
+/* 320px — 480px: Mobile devices.             20rem - 30rem */
+/* 481px — 768px: iPads, Tablets.             30rem - 48rem */
+/* 769px — 1024px: Small screens, laptops.    48rem - 64rem */
+/* 1025px — 1200px: Desktops, large screens.  64rem - 75rem */
+/* 1201px and more — Extra large screens, TV. 75rem+ */
+
+/* screens: smaller than mobile phone  */
+@media only screen and (max-width: 20rem) {
+  .searchbar__btn {
+    width: 80vw;
+  }
+  .searchbar__input {
+    width: 80vw;
+  }
 }
-.searchbar__btn {
-  display: block;
+/* screens: larger than mobile phone  */
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  .searchbar__btn {
+    width: 80vw;
+  }
+  .searchbar__input {
+    width: 80vw;
+  }
 }
