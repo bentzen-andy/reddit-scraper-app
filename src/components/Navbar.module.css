@@ -12,6 +12,7 @@
 .navbar__logo a,
 .navbar__title {
   font-family: "Roboto", sans-serif;
+  font-weight: 500;
   color: #fff;
   margin: auto 1rem;
   font-size: 1rem;
@@ -19,7 +20,7 @@
 }
 .navbar__logo a:hover,
 .navbar__logo a:active {
-  color: #baa4da;
+  color: #bb86fc;
 }
 
 /* Screen size breakpoints according to freecodecamp.com */
