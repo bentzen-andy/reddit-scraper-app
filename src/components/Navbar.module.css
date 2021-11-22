@@ -1,0 +1,53 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+
+.navbar {
+  background-color: #6200ee;
+  box-shadow: rgba(0, 0, 0, 0.34902) 0px 5px 15px;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  height: 3.5rem;
+}
+.navbar__logo,
+.navbar__logo a,
+.navbar__title {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  margin: auto 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+.navbar__logo a:hover,
+.navbar__logo a:active {
+  color: #baa4da;
+}
+
+/* Screen size breakpoints according to freecodecamp.com */
+/* https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/ */
+
+/* 320px — 480px: Mobile devices.             20rem - 30rem */
+/* 481px — 768px: iPads, Tablets.             30rem - 48rem */
+/* 769px — 1024px: Small screens, laptops.    48rem - 64rem */
+/* 1025px — 1200px: Desktops, large screens.  64rem - 75rem */
+/* 1201px and more — Extra large screens, TV. 75rem+ */
+
+/* screens: smaller than mobile phone  */
+@media only screen and (max-width: 20rem) {
+  .navbar__title {
+    visibility: hidden;
+  }
+}
+/* screens: larger than mobile phone  */
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  .navbar__title {
+    visibility: visible;
+    font-size: 1rem;
+  }
+}
+/* screens: ipads/tablets */
+@media only screen and (min-width: 30rem) {
+  .navbar__title {
+    visibility: visible;
+    font-size: 1.5rem;
+  }
+}
