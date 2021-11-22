@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import Button from "../UI/Button";
+import styles from "./SearchBar.module.css";
 
 const SearchBar = (props) => {
   const [subreddit, setSubreddit] = useState("");
@@ -15,17 +17,23 @@ const SearchBar = (props) => {
 
   return (
     <form onSubmit={submitHandler}>
-      <label htmlFor="subreddit">Choose a subreddit: r/</label>
+      <label className={styles["searchbar__label"]} htmlFor="subreddit">
+        www.reddit.com/r/
+      </label>
       <input
+        className={styles["searchbar__input"]}
         type="text"
         id="subreddit"
         name="subreddit"
+        placeholder="askreddit"
         value={subreddit}
         onChange={subredditChangeHandler}
       />
-      <button type="submit" value="Submit">
-        Submit
-      </button>
+      <Button
+        className={styles["searchbar__btn"]}
+        btnText="Submit"
+        type="submit"
+      />
     </form>
   );
 };
