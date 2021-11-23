@@ -27,19 +27,27 @@ const FetchPopularSearches = (props) => {
           return;
         }
 
-        let popularSearches = {};
+        let subreddits = {};
         Object.entries(data).map((item) => {
           const currSub = item[1].subreddit;
           const currCnt = item[1].count;
 
-          if (!popularSearches[currSub]) {
-            popularSearches[currSub] = currCnt;
+          if (!subreddits[currSub]) {
+            subreddits[currSub] = currCnt;
           } else {
-            popularSearches[currSub]++;
+            subreddits[currSub]++;
           }
 
           return null;
         });
+
+        const popularSearches = Object.entries(subreddits).map((item) => {
+          let subreddit = item[0];
+          let count = item[1];
+          return { subreddit, count };
+        });
+
+        popularSearches.sort((a, b) => b.count - a.count);
 
         setIsLoading(false);
         setPopularSearches(popularSearches);
