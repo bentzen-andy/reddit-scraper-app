@@ -7,9 +7,9 @@ const FetchPopularSearches = (props) => {
   const [error, setError] = useState(null);
 
   const getHttpResponse = () => {
-    if (!popularSearches) return <p>no data...</p>;
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Something went wrong...</p>;
+    if (!popularSearches) return <p>no data...</p>;
     return <PopularSearchList data={popularSearches} />;
   };
 
@@ -48,6 +48,7 @@ const FetchPopularSearches = (props) => {
         });
 
         popularSearches.sort((a, b) => b.count - a.count);
+        popularSearches.splice(5, popularSearches.length);
 
         setIsLoading(false);
         setPopularSearches(popularSearches);
@@ -55,12 +56,7 @@ const FetchPopularSearches = (props) => {
       .catch((err) => setError("Something went wrong..."));
   }, [props.subreddit]);
 
-  return (
-    <React.Fragment>
-      <h1>Popular Searches</h1>
-      {getHttpResponse()}
-    </React.Fragment>
-  );
+  return getHttpResponse();
 };
 
 export default FetchPopularSearches;
