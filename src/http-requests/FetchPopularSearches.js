@@ -9,7 +9,6 @@ const FetchPopularSearches = (props) => {
   const getHttpResponse = () => {
     if (isLoading) return <p>Loading...</p>;
     if (error) return <p>Something went wrong...</p>;
-    if (!popularSearches) return <p>no data...</p>;
     return <PopularSearchList data={popularSearches} />;
   };
 
@@ -22,13 +21,12 @@ const FetchPopularSearches = (props) => {
       .then((response) => response.json())
       .then((data) => {
         if (!data) {
-          setPopularSearches({});
           setIsLoading(false);
           return;
         }
 
         let subreddits = {};
-        Object.entries(data).map((item) => {
+        for (const item of Object.entries(data)) {
           const currSub = item[1].subreddit;
           const currCnt = item[1].count;
 
@@ -37,9 +35,7 @@ const FetchPopularSearches = (props) => {
           } else {
             subreddits[currSub]++;
           }
-
-          return null;
-        });
+        }
 
         const popularSearches = Object.entries(subreddits).map((item) => {
           let subreddit = item[0];
