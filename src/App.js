@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Instructions from "./components/Instructions";
 import SearchBar from "./components/SearchBar";
-import FetchHeatMap from "./http-requests/FetchHeatMap";
+import FetchHeatMap from "./http-requests/FetchHeatmap";
 import FetchPopularSearches from "./http-requests/FetchPopularSearches";
 
 const App = () => {
