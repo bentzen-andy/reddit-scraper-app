@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import RedditDataList from "../components/heatmap/RedditDataList";
 
-const FetchHeatMap = (props) => {
+const FetchHeatmap = (props) => {
   const [redditSubmissions, setRedditSubmissions] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -92,4 +92,4 @@ const FetchHeatMap = (props) => {
   return getHttpResponse();
 };
 
-export default FetchHeatMap;
+export default FetchHeatmap;

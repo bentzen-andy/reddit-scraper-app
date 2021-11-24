@@ -1,6 +1,7 @@
 import React from "react";
+import GridSquare from "./GridSquare";
 
-const HeatmapPortraitStyle = ({ dayHour, screenWidth }) => {
+const HeatmapPortraitStyle = ({ dayHour, screenWidth, maxDailyPosts }) => {
   const invertDayHour = (dayHour) => {
     let hourDay = new Array(24);
     for (let i = 0; i < hourDay.length; i++) {
@@ -19,18 +20,17 @@ const HeatmapPortraitStyle = ({ dayHour, screenWidth }) => {
   const hourDay = invertDayHour(dayHour);
 
   const getDaysOfWeek = () => {
-    console.log(screenWidth);
     if (screenWidth >= 480) {
       return (
         <tr>
           <th></th>
-          <th>Sunday</th>
-          <th>Monday</th>
-          <th>Tuesday</th>
-          <th>Wednesday</th>
-          <th>Thursday</th>
-          <th>Friday</th>
-          <th>Saturday</th>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thr</th>
+          <th>Fri</th>
+          <th>Sat</th>
         </tr>
       );
     } else {
@@ -51,7 +51,7 @@ const HeatmapPortraitStyle = ({ dayHour, screenWidth }) => {
 
   return (
     <div>
-      <table>
+      <table cellSpacing="0" cellPadding="0" border="0">
         <thead>{getDaysOfWeek()}</thead>
         <tbody>
           {hourDay.map((hours, i) => (
@@ -60,7 +60,11 @@ const HeatmapPortraitStyle = ({ dayHour, screenWidth }) => {
                 {i % 12 === 0 ? 12 : i % 12} {i < 12 ? "AM" : "PM"}
               </td>
               {hours.map((hour, j) => (
-                <td key={j}>{hour}</td>
+                <GridSquare
+                  key={j}
+                  numPosts={hour}
+                  maxDailyPosts={maxDailyPosts}
+                />
               ))}
             </tr>
           ))}

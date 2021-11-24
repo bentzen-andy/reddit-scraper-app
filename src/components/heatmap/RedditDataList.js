@@ -29,19 +29,42 @@ const RedditDataList = (props) => {
     return dayHour;
   };
 
+  const getMax = (arr2D) => {
+    return arr2D.flat().reduce((a, b) => Math.max(a, b), 0);
+  };
+
   const dayHour = defineDayHourData();
+  const maxDailyPosts = getMax(dayHour);
 
   // every time the screen size changes (e.g., user rotates iPad), check
   // if screen is landscape or portrait and adjust heatmap table accordingly
   useEffect(() => {
     if (!props.data || props.data.length === 0) return <p>No data...</p>;
-    if (width > height) return <HeatmapLandscapeStyle dayHour={dayHour} />;
-    else return <HeatmapPortraitStyle dayHour={dayHour} screenWidth={width} />;
-  }, [height, width, dayHour, props.data]);
+    if (width > height)
+      return <HeatmapLandscapeStyle dayHour={dayHour} max={maxDailyPosts} />;
+    else
+      return (
+        <HeatmapPortraitStyle
+          dayHour={dayHour}
+          screenWidth={width}
+          maxDailyPosts={maxDailyPosts}
+        />
+      );
+  }, [height, width, dayHour, props.data, maxDailyPosts]);
 
   if (!props.data || props.data.length === 0) return <p>No data...</p>;
-  if (width > height) return <HeatmapLandscapeStyle dayHour={dayHour} />;
-  else return <HeatmapPortraitStyle dayHour={dayHour} screenWidth={width} />;
+  if (width > height)
+    return (
+      <HeatmapLandscapeStyle dayHour={dayHour} maxDailyPosts={maxDailyPosts} />
+    );
+  else
+    return (
+      <HeatmapPortraitStyle
+        dayHour={dayHour}
+        screenWidth={width}
+        maxDailyPosts={maxDailyPosts}
+      />
+    );
 };
 
 export default RedditDataList;

@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Instructions from "./components/Instructions";
 import SearchBar from "./components/SearchBar";
-import FetchHeatMap from "./http-requests/FetchHeatmap";
+import FetchHeatmap from "./http-requests/FetchHeatmap";
 import FetchPopularSearches from "./http-requests/FetchPopularSearches";
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
       <Navbar />
       <Instructions />
       <SearchBar onSubmit={onSubmitHandler} />
-      {subreddit && <FetchHeatMap subreddit={subreddit} />}
+      {subreddit && <FetchHeatmap subreddit={subreddit} />}
       <FetchPopularSearches subreddit={subreddit} />
     </div>
   );

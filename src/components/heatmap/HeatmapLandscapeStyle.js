@@ -1,6 +1,7 @@
 import React from "react";
+import GridSquare from "./GridSquare";
 
-const HeatmapLandscapeStyle = ({ dayHour }) => {
+const HeatmapLandscapeStyle = ({ dayHour, maxDailyPosts }) => {
   const week = [
     "Sunday",
     "Monday",
@@ -13,34 +14,106 @@ const HeatmapLandscapeStyle = ({ dayHour }) => {
 
   return (
     <div>
-      <table>
+      <table cellSpacing="0" cellPadding="0" border="0">
         <thead>
           <tr>
             <th></th>
-            <th>12 AM</th>
-            <th>1 AM</th>
-            <th>2 AM</th>
-            <th>3 AM</th>
-            <th>4 AM</th>
-            <th>5 AM</th>
-            <th>6 AM</th>
-            <th>7 AM</th>
-            <th>8 AM</th>
-            <th>9 AM</th>
-            <th>10 AM</th>
-            <th>11 AM</th>
-            <th>12 PM</th>
-            <th>1 PM</th>
-            <th>2 PM</th>
-            <th>3 PM</th>
-            <th>4 PM</th>
-            <th>5 PM</th>
-            <th>6 PM</th>
-            <th>7 PM</th>
-            <th>8 PM</th>
-            <th>9 PM</th>
-            <th>10 PM</th>
-            <th>11 PM</th>
+            <th>
+              <div>12</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>1</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>2</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>3</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>4</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>5</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>6</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>7</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>8</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>9</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>10</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>11</div>
+              <div>AM</div>
+            </th>
+            <th>
+              <div>12</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>1</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>2</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>3</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>4</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>5</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>6</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>7</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>8</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>9</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>10</div>
+              <div>PM</div>
+            </th>
+            <th>
+              <div>11</div>
+              <div>PM</div>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -48,7 +121,11 @@ const HeatmapLandscapeStyle = ({ dayHour }) => {
             <tr key={i}>
               <td>{week[i]}</td>
               {days.map((day, j) => (
-                <td key={j}>{day}</td>
+                <GridSquare
+                  key={j}
+                  numPosts={day}
+                  maxDailyPosts={maxDailyPosts}
+                />
               ))}
             </tr>
           ))}

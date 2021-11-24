@@ -1,0 +1,50 @@
+.grid-square {
+  width: 4rem;
+  height: 4rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background-color: #eee;
+}
+.color-1 {
+  background-color: #daf7a6;
+}
+.color-2 {
+  background-color: #ffc300;
+}
+.color-3 {
+  background-color: #ff5733;
+}
+.color-4 {
+  background-color: #c70039;
+}
+.color-5 {
+  background-color: #900c3f;
+}
+.color-6 {
+  background-color: #581845;
+}
+
+/* Screen size breakpoints according to freecodecamp.com */
+/* https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/ */
+
+/* 320px — 480px: Mobile devices.             20rem - 30rem */
+/* 481px — 768px: iPads, Tablets.             30rem - 48rem */
+/* 769px — 1024px: Small screens, laptops.    48rem - 64rem */
+/* 1025px — 1200px: Desktops, large screens.  64rem - 75rem */
+/* 1201px and more — Extra large screens, TV. 75rem+ */
+
+/* screens: small mobile phone  */
+@media only screen and (max-width: 20rem) {
+  .grid-square {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+/* screens: mobile phone  */
+@media only screen and (min-width: 20rem) and (max-width: 30rem) {
+  .grid-square {
+    width: 3rem;
+    height: 3rem;
+  }
+}
