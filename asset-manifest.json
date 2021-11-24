@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/reddit-scraper-app/static/css/main.f67c9b16.chunk.css",
-    "main.js": "/reddit-scraper-app/static/js/main.aad6503a.chunk.js",
-    "main.js.map": "/reddit-scraper-app/static/js/main.aad6503a.chunk.js.map",
-    "runtime-main.js": "/reddit-scraper-app/static/js/runtime-main.4ebd2820.js",
-    "runtime-main.js.map": "/reddit-scraper-app/static/js/runtime-main.4ebd2820.js.map",
-    "static/js/2.38799bdc.chunk.js": "/reddit-scraper-app/static/js/2.38799bdc.chunk.js",
-    "static/js/2.38799bdc.chunk.js.map": "/reddit-scraper-app/static/js/2.38799bdc.chunk.js.map",
-    "static/js/3.4744be48.chunk.js": "/reddit-scraper-app/static/js/3.4744be48.chunk.js",
-    "static/js/3.4744be48.chunk.js.map": "/reddit-scraper-app/static/js/3.4744be48.chunk.js.map",
+    "main.css": "/reddit-scraper-app/static/css/main.3474f323.chunk.css",
+    "main.js": "/reddit-scraper-app/static/js/main.0905b31b.chunk.js",
+    "main.js.map": "/reddit-scraper-app/static/js/main.0905b31b.chunk.js.map",
+    "runtime-main.js": "/reddit-scraper-app/static/js/runtime-main.8d0e280a.js",
+    "runtime-main.js.map": "/reddit-scraper-app/static/js/runtime-main.8d0e280a.js.map",
+    "static/js/2.856f3a75.chunk.js": "/reddit-scraper-app/static/js/2.856f3a75.chunk.js",
+    "static/js/2.856f3a75.chunk.js.map": "/reddit-scraper-app/static/js/2.856f3a75.chunk.js.map",
+    "static/js/3.67d6a0ea.chunk.js": "/reddit-scraper-app/static/js/3.67d6a0ea.chunk.js",
+    "static/js/3.67d6a0ea.chunk.js.map": "/reddit-scraper-app/static/js/3.67d6a0ea.chunk.js.map",
     "index.html": "/reddit-scraper-app/index.html",
-    "static/css/main.f67c9b16.chunk.css.map": "/reddit-scraper-app/static/css/main.f67c9b16.chunk.css.map",
-    "static/js/2.38799bdc.chunk.js.LICENSE.txt": "/reddit-scraper-app/static/js/2.38799bdc.chunk.js.LICENSE.txt"
+    "static/css/main.3474f323.chunk.css.map": "/reddit-scraper-app/static/css/main.3474f323.chunk.css.map",
+    "static/js/2.856f3a75.chunk.js.LICENSE.txt": "/reddit-scraper-app/static/js/2.856f3a75.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.4ebd2820.js",
-    "static/js/2.38799bdc.chunk.js",
-    "static/css/main.f67c9b16.chunk.css",
-    "static/js/main.aad6503a.chunk.js"
+    "static/js/runtime-main.8d0e280a.js",
+    "static/js/2.856f3a75.chunk.js",
+    "static/css/main.3474f323.chunk.css",
+    "static/js/main.0905b31b.chunk.js"
   ]
 }
