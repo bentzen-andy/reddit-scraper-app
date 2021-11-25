@@ -4,9 +4,9 @@ import styles from "./Navbar.module.css";
 const Navbar = () => {
   return (
     <div className={styles["navbar"]}>
-      <div className={styles["navbar__logo"]}>
-        <a href="/">[LOGO]</a>
-      </div>
+      <a className={styles["navbar__logo-container"]} href="/react-scraper-app">
+        <div className={styles["navbar__logo"]}>R</div>
+      </a>
       <div className={styles["navbar__title"]}>Reddit Scraper App</div>
     </div>
   );

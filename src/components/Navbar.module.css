@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@800&display=swap");
 
 .navbar {
   background-color: #6200ee;
@@ -10,8 +11,6 @@
   justify-content: space-between;
   height: 3.5rem;
 }
-.navbar__logo,
-.navbar__logo a,
 .navbar__title {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
@@ -19,9 +18,28 @@
   margin: auto 1rem;
   font-size: 1rem;
 }
-.navbar__logo a:hover,
-.navbar__logo a:active {
-  color: #bb86fc;
+
+.navbar__logo-container {
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 0.4rem 1rem;
+  padding: 1rem;
+  transform: perspective(200px) rotateX(45deg) rotateY(-45deg) rotateZ(35deg);
+}
+.navbar__logo-container:hover,
+.navbar__logo-container:active {
+  background-color: #bb86fc;
+}
+.navbar__logo {
+  font-family: "Roboto", sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  color: #6200ee;
+  /* padding: 0.1rem; */
 }
 
 /* Screen size breakpoints according to freecodecamp.com */
