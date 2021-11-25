@@ -15,9 +15,7 @@ const FetchHeatmap = (props) => {
     if (redditSubmissions)
       return (
         <React.Fragment>
-          <HeatmapTitle
-            subreddit={redditSubmissions[0].subreddit.toLowerCase()}
-          />
+          <HeatmapTitle subreddit={redditSubmissions[0].subreddit.toLowerCase()} />
           <RedditDataList data={redditSubmissions} />
         </React.Fragment>
       );
@@ -31,9 +29,7 @@ const FetchHeatmap = (props) => {
     const clientLocale = Intl.DateTimeFormat().resolvedOptions().locale;
 
     // get Reddit submission data from Reddit API
-    fetch(
-      `https://www.reddit.com/r/${props.subreddit}/top.json?t=month&limit=100`
-    )
+    fetch(`https://www.reddit.com/r/${props.subreddit}/top.json?t=month&limit=100`)
       .then((response) => response.json())
       .then((data) => {
         if (!data || data.length === 0) {
@@ -78,28 +74,23 @@ const FetchHeatmap = (props) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(
-          `Error: No data available for subreddit: "${props.subreddit}"`
-        );
+        setError(`Error: No data available for subreddit: "${props.subreddit}"`);
       });
   }, [props.subreddit]);
 
   // send the subreddit search to the sever so we can track popular searches
   useEffect(() => {
     if (redditSubmissions && redditSubmissions.length > 0) {
-      fetch(
-        "https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            subreddit: redditSubmissions[0].subreddit.toLowerCase(),
-            count: 1,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      fetch("https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json", {
+        method: "POST",
+        body: JSON.stringify({
+          subreddit: redditSubmissions[0].subreddit.toLowerCase(),
+          count: 1,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
     }
   }, [redditSubmissions]);
 
