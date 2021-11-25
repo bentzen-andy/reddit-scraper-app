@@ -17,12 +17,15 @@
 }
 .color-4 {
   background-color: #c70039;
+  color: #fff;
 }
 .color-5 {
   background-color: #900c3f;
+  color: #fff;
 }
 .color-6 {
   background-color: #581845;
+  color: #fff;
 }
 
 /* Screen size breakpoints according to freecodecamp.com */

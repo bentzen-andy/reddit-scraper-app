@@ -7,15 +7,10 @@ const RedditDataList = (props) => {
   const { height, width } = useScreenSize();
 
   const defineDayHourData = () => {
-    let dayHour = [
-      new Array(24).fill(0),
-      new Array(24).fill(0),
-      new Array(24).fill(0),
-      new Array(24).fill(0),
-      new Array(24).fill(0),
-      new Array(24).fill(0),
-      new Array(24).fill(0),
-    ];
+    let dayHour = [];
+    for (let i = 0; i < 7; i++) {
+      dayHour.push(new Array(24).fill(0));
+    }
 
     for (const item of props.data) {
       if (item.day === 0) dayHour[0][parseInt(item.hour, 10)]++;
@@ -40,31 +35,13 @@ const RedditDataList = (props) => {
   // if screen is landscape or portrait and adjust heatmap table accordingly
   useEffect(() => {
     if (!props.data || props.data.length === 0) return <p>No data...</p>;
-    if (width > height)
-      return <HeatmapLandscapeStyle dayHour={dayHour} max={maxDailyPosts} />;
-    else
-      return (
-        <HeatmapPortraitStyle
-          dayHour={dayHour}
-          screenWidth={width}
-          maxDailyPosts={maxDailyPosts}
-        />
-      );
+    if (width > height) return <HeatmapLandscapeStyle dayHour={dayHour} max={maxDailyPosts} />;
+    else return <HeatmapPortraitStyle dayHour={dayHour} screenWidth={width} maxDailyPosts={maxDailyPosts} />;
   }, [height, width, dayHour, props.data, maxDailyPosts]);
 
   if (!props.data || props.data.length === 0) return <p>No data...</p>;
-  if (width > height)
-    return (
-      <HeatmapLandscapeStyle dayHour={dayHour} maxDailyPosts={maxDailyPosts} />
-    );
-  else
-    return (
-      <HeatmapPortraitStyle
-        dayHour={dayHour}
-        screenWidth={width}
-        maxDailyPosts={maxDailyPosts}
-      />
-    );
+  if (width > height) return <HeatmapLandscapeStyle dayHour={dayHour} maxDailyPosts={maxDailyPosts} />;
+  else return <HeatmapPortraitStyle dayHour={dayHour} screenWidth={width} maxDailyPosts={maxDailyPosts} />;
 };
 
 export default RedditDataList;
