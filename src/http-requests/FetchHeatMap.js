@@ -14,6 +14,7 @@ const FetchHeatmap = (props) => {
   };
 
   useEffect(() => {
+    setError(null);
     setIsLoading(true);
     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const clientLocale = Intl.DateTimeFormat().resolvedOptions().locale;
@@ -26,9 +27,11 @@ const FetchHeatmap = (props) => {
       .then((data) => {
         if (!data || data.length === 0) {
           setIsLoading(false);
+          setError(null);
           setRedditSubmissions(null);
           return;
         }
+
         const redditData = data.data.children.map((item) => {
           const postCreationDate = new Date(item.data.created_utc * 1000);
 
