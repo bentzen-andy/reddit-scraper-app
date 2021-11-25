@@ -119,7 +119,7 @@ const HeatmapLandscapeStyle = ({ dayHour, maxDailyPosts }) => {
         <tbody>
           {dayHour.map((days, i) => (
             <tr key={i}>
-              <td>{week[i]}</td>
+              <td style={{ textAlign: "right" }}>{week[i]}</td>
               {days.map((day, j) => (
                 <GridSquare
                   key={j}
