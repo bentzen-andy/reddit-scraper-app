@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PopularSearchList from "../components/PopularSearchList";
+import { TailSpin } from "../components/loading-spinners/TailSpin";
 
 const FetchPopularSearches = (props) => {
   const [popularSearches, setPopularSearches] = useState(null);
@@ -7,7 +8,7 @@ const FetchPopularSearches = (props) => {
   const [error, setError] = useState(null);
 
   const getHttpResponse = () => {
-    if (isLoading) return <p>Loading...</p>;
+    if (isLoading) return <TailSpin color="#6200ee" />;
     if (error) return <p>Something went wrong...</p>;
     return <PopularSearchList data={popularSearches} />;
   };
@@ -50,7 +51,7 @@ const FetchPopularSearches = (props) => {
         setPopularSearches(popularSearches);
       })
       .catch((err) => setError("Something went wrong..."));
-  }, [props.subreddit]);
+  }, []);
 
   return getHttpResponse();
 };

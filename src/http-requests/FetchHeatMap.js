@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RedditDataList from "../components/heatmap/RedditDataList";
+import { TailSpin } from "../components/loading-spinners/TailSpin";
 
 const FetchHeatmap = (props) => {
   const [redditSubmissions, setRedditSubmissions] = useState(null);
@@ -7,7 +8,7 @@ const FetchHeatmap = (props) => {
   const [error, setError] = useState(null);
 
   const getHttpResponse = () => {
-    if (isLoading) return <p>Loading... </p>;
+    if (isLoading) return <TailSpin color="#6200ee" />;
     if (error) return <p>{error}</p>;
     if (redditSubmissions) return <RedditDataList data={redditSubmissions} />;
     return <p>Something went wrong... </p>;
