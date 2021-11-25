@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import useScreenSize from "../../hooks/useScreenSize";
 import HeatmapLandscapeStyle from "./HeatmapLandscapeStyle";
 import HeatmapPortraitStyle from "./HeatmapPortraitStyle";
+import NoDataMessage from "../error-msg/NoDataMessage";
 
 const RedditDataList = (props) => {
   const { height, width } = useScreenSize();
@@ -34,12 +35,12 @@ const RedditDataList = (props) => {
   // every time the screen size changes (e.g., user rotates iPad), check
   // if screen is landscape or portrait and adjust heatmap table accordingly
   useEffect(() => {
-    if (!props.data || props.data.length === 0) return <p>No data...</p>;
+    if (!props.data || props.data.length === 0) return <NoDataMessage />;
     if (width > height) return <HeatmapLandscapeStyle dayHour={dayHour} max={maxDailyPosts} />;
     else return <HeatmapPortraitStyle dayHour={dayHour} screenWidth={width} maxDailyPosts={maxDailyPosts} />;
   }, [height, width, dayHour, props.data, maxDailyPosts]);
 
-  if (!props.data || props.data.length === 0) return <p>No data...</p>;
+  if (!props.data || props.data.length === 0) return <NoDataMessage />;
   if (width > height) return <HeatmapLandscapeStyle dayHour={dayHour} maxDailyPosts={maxDailyPosts} />;
   else return <HeatmapPortraitStyle dayHour={dayHour} screenWidth={width} maxDailyPosts={maxDailyPosts} />;
 };

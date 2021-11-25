@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { TailSpin } from "../components/loading-spinners/TailSpin";
 import ErrorMessage from "../components/error-msg/ErrorMessage";
 import RedditDataList from "../components/heatmap/RedditDataList";
+import HeatmapTitle from "../components/heatmap/HeatmapTitle";
 
 const FetchHeatmap = (props) => {
   const [redditSubmissions, setRedditSubmissions] = useState(null);
@@ -11,8 +12,16 @@ const FetchHeatmap = (props) => {
   const getHttpResponse = () => {
     if (isLoading) return <TailSpin color="#6200ee" />;
     if (error) return <ErrorMessage msg={error} />;
-    if (redditSubmissions) return <RedditDataList data={redditSubmissions} />;
-    return <p>Something went wrong... </p>;
+    if (redditSubmissions)
+      return (
+        <React.Fragment>
+          <HeatmapTitle
+            subreddit={redditSubmissions[0].subreddit.toLowerCase()}
+          />
+          <RedditDataList data={redditSubmissions} />
+        </React.Fragment>
+      );
+    return <ErrorMessage msg={error} />;
   };
 
   useEffect(() => {
