@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import PopularSearchList from "../components/PopularSearchList";
 import { TailSpin } from "../components/loading-spinners/TailSpin";
+import ErrorMessage from "../components/error-msg/ErrorMessage";
+import PopularSearchList from "../components/PopularSearchList";
 
 const FetchPopularSearches = (props) => {
   const [popularSearches, setPopularSearches] = useState(null);
@@ -9,7 +10,7 @@ const FetchPopularSearches = (props) => {
 
   const getHttpResponse = () => {
     if (isLoading) return <TailSpin color="#6200ee" />;
-    if (error) return <p>Something went wrong...</p>;
+    if (error) return <ErrorMessage msg={error} />;
     return <PopularSearchList data={popularSearches} />;
   };
 
