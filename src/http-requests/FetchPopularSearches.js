@@ -3,7 +3,7 @@ import { TailSpin } from "../components/loading-spinners/TailSpin";
 import ErrorMessage from "../components/error-msg/ErrorMessage";
 import PopularSearchList from "../components/PopularSearchList";
 
-const FetchPopularSearches = (props) => {
+const FetchPopularSearches = () => {
   const [popularSearches, setPopularSearches] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -17,9 +17,7 @@ const FetchPopularSearches = (props) => {
   useEffect(() => {
     setIsLoading(true);
 
-    fetch(
-      "https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json"
-    )
+    fetch("https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json")
       .then((response) => response.json())
       .then((data) => {
         if (!data) {
