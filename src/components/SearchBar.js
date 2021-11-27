@@ -16,11 +16,16 @@ const SearchBar = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+
+    // input validation:
+    // NOTE: this is not a legitimate security validation since users can
+    // easily bypass front-end code. Rather, this check is a placeholder for
+    // back-end code that will be needed to prevent a DoS attack.
     if (submissionLimitReached) {
       return;
     } else {
       setSubmissionLimitReached(true);
-      setTimeout(() => setSubmissionLimitReached(false), 5000);
+      setTimeout(() => setSubmissionLimitReached(false), 3000);
     }
     if (enteredSubreddit.trim().length === 0) {
       setSubredditIsValid(false);

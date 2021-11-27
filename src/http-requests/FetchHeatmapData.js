@@ -9,27 +9,40 @@ const FetchHeatmap = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const getHttpResponse = () => {
+  // input validation:
+  // NOTE: This isn't really a secure validation because front-end code can
+  // be edited by the client. This is just a placeholder for the real
+  // security validation that needs to go on the server.
+  const sanitizeInput = (input) => {
+    let validChars = /^[a-zA-Z0-9]*$/g;
+    let regexResult = validChars.exec(input);
+    return regexResult ? regexResult[0] : "";
+  };
+
+  const getHttpResponse = (subredditInput) => {
     if (isLoading) return <TailSpin color="#6200ee" />;
     if (error) return <ErrorMessage msg={error} />;
     if (redditSubmissions)
       return (
         <React.Fragment>
-          <HeatmapTitle subreddit={props.subreddit} />
+          <HeatmapTitle subreddit={subredditInput} />
           <RedditDataList data={redditSubmissions} />
         </React.Fragment>
       );
     return <ErrorMessage msg={error} />;
   };
 
+  const subredditInput = sanitizeInput(props.subreddit);
+
   useEffect(() => {
+    if (!subredditInput || subredditInput.length === 0) return;
     setError(null);
     setIsLoading(true);
     const clientTimeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const clientLocale = Intl.DateTimeFormat().resolvedOptions().locale;
 
     // get Reddit submission data from Reddit API
-    fetch(`https://www.reddit.com/r/${props.subreddit}/top.json?t=month&limit=100`)
+    fetch(`https://www.reddit.com/r/${subredditInput}/top.json?t=month&limit=100`)
       .then((response) => response.json())
       .then((data) => {
         // deny searches for explicit content
@@ -46,7 +59,7 @@ const FetchHeatmap = (props) => {
           const postCreationDate = new Date(item.data.created_utc * 1000);
 
           return {
-            subreddit: props.subreddit,
+            subreddit: subredditInput,
             upvote_ratio: item.data.upvote_ratio,
             unix_time: postCreationDate,
             day: postCreationDate.getDay(),
@@ -77,9 +90,9 @@ const FetchHeatmap = (props) => {
       })
       .catch((err) => {
         setIsLoading(false);
-        setError(`Error: No data available for subreddit: "${props.subreddit}"`);
+        setError(`Error: No data available for subreddit: "${subredditInput}"`);
       });
-  }, [props.subreddit]);
+  }, [subredditInput]);
 
   // send the subreddit search to the sever so we can track popular searches
   useEffect(() => {
@@ -97,7 +110,7 @@ const FetchHeatmap = (props) => {
     }
   }, [redditSubmissions]);
 
-  return getHttpResponse();
+  return getHttpResponse(subredditInput);
 };
 
 export default FetchHeatmap;
