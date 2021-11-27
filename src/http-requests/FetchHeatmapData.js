@@ -32,6 +32,16 @@ const FetchHeatmap = (props) => {
     fetch(`https://www.reddit.com/r/${props.subreddit}/top.json?t=month&limit=100`)
       .then((response) => response.json())
       .then((data) => {
+        // deny searches for explicit content
+        const isExplicitContent = data.data.children
+          .map((item) => item.data.over_18)
+          .every((val) => val === true);
+        if (isExplicitContent) {
+          setIsLoading(false);
+          setError("Explicit content not allowed. Please try a different subreddit.");
+          return;
+        }
+
         const redditData = data.data.children.map((item) => {
           const postCreationDate = new Date(item.data.created_utc * 1000);
 
