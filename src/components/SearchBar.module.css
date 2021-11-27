@@ -9,10 +9,22 @@
   margin-left: 1rem;
 }
 .searchbar__input {
+  display: inline-block;
+}
+.searchbar__input--box {
   height: 2.5rem;
   width: 20rem;
   border: solid grey 1px;
   border-radius: 4px;
+}
+.invalid {
+  border: solid #d8000c 1px;
+}
+.searchbar__input--error {
+  color: #d8000c;
+  font-size: 0.8rem;
+  margin: 0;
+  text-align: left;
 }
 .searchbar__input:focus {
   border: solid #6200ee 2px;
@@ -32,7 +44,7 @@
   .searchbar__btn {
     width: 80vw;
   }
-  .searchbar__input {
+  .searchbar__input--box {
     width: 80vw;
   }
 }
@@ -41,7 +53,7 @@
   .searchbar__btn {
     width: 80vw;
   }
-  .searchbar__input {
+  .searchbar__input--box {
     width: 80vw;
   }
 }

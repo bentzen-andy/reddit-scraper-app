@@ -13,12 +13,10 @@
   color: #fff;
   cursor: pointer;
 }
-
 .btn:hover,
 .btn:active {
   background-color: #bb86fc;
 }
-
 .btn:focus {
   background-color: #6200ee;
 }
