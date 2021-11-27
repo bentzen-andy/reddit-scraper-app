@@ -15,7 +15,7 @@ const FetchHeatmap = (props) => {
     if (redditSubmissions)
       return (
         <React.Fragment>
-          <HeatmapTitle subreddit={redditSubmissions[0].subreddit.toLowerCase()} />
+          <HeatmapTitle subreddit={props.subreddit} />
           <RedditDataList data={redditSubmissions} />
         </React.Fragment>
       );
@@ -32,13 +32,6 @@ const FetchHeatmap = (props) => {
     fetch(`https://www.reddit.com/r/${props.subreddit}/top.json?t=month&limit=100`)
       .then((response) => response.json())
       .then((data) => {
-        if (!data || data.length === 0) {
-          setIsLoading(false);
-          setError(null);
-          setRedditSubmissions(null);
-          return;
-        }
-
         const redditData = data.data.children.map((item) => {
           const postCreationDate = new Date(item.data.created_utc * 1000);
 
