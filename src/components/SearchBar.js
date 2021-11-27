@@ -5,6 +5,7 @@ import styles from "./SearchBar.module.css";
 
 const SearchBar = (props) => {
   const [subredditIsValid, setSubredditIsValid] = useState(true);
+  const [submissionLimitReached, setSubmissionLimitReached] = useState(false);
 
   const {
     value: enteredSubreddit,
@@ -15,6 +16,12 @@ const SearchBar = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    if (submissionLimitReached) {
+      return;
+    } else {
+      setSubmissionLimitReached(true);
+      setTimeout(() => setSubmissionLimitReached(false), 5000);
+    }
     if (enteredSubreddit.trim().length === 0) {
       setSubredditIsValid(false);
       resetSubreddit();
