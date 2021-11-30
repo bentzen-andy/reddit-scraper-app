@@ -4,6 +4,8 @@ const useInput = (checkValidity) => {
   const [value, setValue] = useState("");
   const [isTouched, setIsTouched] = useState(false);
 
+  const isValid = checkValidity(value);
+
   const valueChangeHandler = (event) => {
     setValue(event.target.value);
   };
@@ -13,6 +15,7 @@ const useInput = (checkValidity) => {
   };
 
   const reset = () => {
+    if (!isValid) return;
     setValue("");
     setIsTouched(false);
   };
@@ -20,6 +23,7 @@ const useInput = (checkValidity) => {
   return {
     value,
     isTouched,
+    isValid,
     valueChangeHandler,
     valueBlurHandler,
     reset,

@@ -1,44 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import useInput from "../hooks/useInput";
 import Button from "../UI/Button";
 import styles from "./SearchBar.module.css";
 
 const SearchBar = (props) => {
-  const [subredditIsValid, setSubredditIsValid] = useState(true);
-
   const {
     value: enteredSubreddit,
+    isValid: subredditIsValid,
+    isTouched: subredditIsTouched,
     valueChangeHandler: subredditChangeHandler,
     valueBlurHandler: subredditBlurHandler,
     reset: resetSubreddit,
-  } = useInput();
+  } = useInput((value) => value.trim().length > 0);
 
   const submitHandler = (event) => {
     event.preventDefault();
-
-    if (enteredSubreddit.trim().length === 0) {
-      setSubredditIsValid(false);
-      resetSubreddit();
-      return;
-    }
     props.onSubmit(enteredSubreddit.toLowerCase().trim());
-    setSubredditIsValid(true);
     resetSubreddit();
   };
 
-  if (!subredditIsValid && enteredSubreddit.trim().length > 0) {
-    setSubredditIsValid(true);
-  }
+  const subredditValidationText =
+    !subredditIsValid && subredditIsTouched ? (
+      <div className={styles["searchbar__input--error"]}>
+        Please enter a valid subreddit.
+      </div>
+    ) : null;
 
-  const subredditValidationText = !subredditIsValid && (
-    <div className={styles["searchbar__input--error"]}>
-      Please enter a valid subreddit.
-    </div>
-  );
-
-  const inputStyles = !subredditIsValid
-    ? `${styles["searchbar__input--box"]} ${styles["invalid"]}`
-    : styles["searchbar__input--box"];
+  const inputStyles =
+    !subredditIsValid && subredditIsTouched
+      ? `${styles["searchbar__input--box"]} ${styles["invalid"]}`
+      : styles["searchbar__input--box"];
 
   return (
     <form onSubmit={submitHandler}>
