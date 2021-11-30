@@ -11,7 +11,7 @@ const SearchBar = (props) => {
     valueChangeHandler: subredditChangeHandler,
     valueBlurHandler: subredditBlurHandler,
     reset: resetSubreddit,
-  } = useInput((value) => value.trim().length > 0);
+  } = useInput((value) => value.length === 0 || value.trim().length > 0);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -49,7 +49,12 @@ const SearchBar = (props) => {
           onBlur={subredditBlurHandler}
         />
       </div>
-      <Button className={styles["searchbar__btn"]} btnText="Submit" type="submit" />
+      <Button
+        className={styles["searchbar__btn"]}
+        btnText="Submit"
+        type="submit"
+        disabled={!subredditIsValid}
+      />
     </form>
   );
 };
