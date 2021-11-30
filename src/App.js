@@ -19,7 +19,7 @@ const App = () => {
       <Instructions />
       <SearchBar onSubmit={onSubmitHandler} />
       {subreddit && <FetchHeatmapData subreddit={subreddit} />}
-      <FetchPopularSearches />
+      <FetchPopularSearches subreddit={subreddit} />
     </div>
   );
 };
