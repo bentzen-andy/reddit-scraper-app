@@ -18,102 +18,12 @@ const HeatmapLandscapeStyle = ({ dayHour, maxDailyPosts }) => {
         <thead>
           <tr>
             <th></th>
-            <th>
-              <div>12</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>1</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>2</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>3</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>4</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>5</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>6</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>7</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>8</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>9</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>10</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>11</div>
-              <div>AM</div>
-            </th>
-            <th>
-              <div>12</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>1</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>2</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>3</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>4</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>5</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>6</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>7</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>8</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>9</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>10</div>
-              <div>PM</div>
-            </th>
-            <th>
-              <div>11</div>
-              <div>PM</div>
-            </th>
+            {dayHour[0].map((hour, i) => (
+              <th>
+                <div>{i % 12 === 0 ? 12 : i % 12}</div>
+                <div>{i < 12 ? "AM" : "PM"}</div>
+              </th>
+            ))}
           </tr>
         </thead>
         <tbody>
@@ -121,11 +31,7 @@ const HeatmapLandscapeStyle = ({ dayHour, maxDailyPosts }) => {
             <tr key={i}>
               <td style={{ textAlign: "right" }}>{week[i]}</td>
               {days.map((day, j) => (
-                <GridSquare
-                  key={j}
-                  numPosts={day}
-                  maxDailyPosts={maxDailyPosts}
-                />
+                <GridSquare key={j} numPosts={day} maxDailyPosts={maxDailyPosts} />
               ))}
             </tr>
           ))}
