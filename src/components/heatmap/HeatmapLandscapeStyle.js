@@ -19,7 +19,7 @@ const HeatmapLandscapeStyle = ({ dayHour, maxDailyPosts }) => {
           <tr>
             <th></th>
             {dayHour[0].map((hour, i) => (
-              <th>
+              <th key={i}>
                 <div>{i % 12 === 0 ? 12 : i % 12}</div>
                 <div>{i < 12 ? "AM" : "PM"}</div>
               </th>

@@ -17,8 +17,6 @@ const HeatmapPortraitStyle = ({ dayHour, screenWidth, maxDailyPosts }) => {
     return hourDay;
   };
 
-  const hourDay = invertDayHour(dayHour);
-
   const getDaysOfWeek = () => {
     if (screenWidth >= 480) {
       return (
@@ -49,6 +47,8 @@ const HeatmapPortraitStyle = ({ dayHour, screenWidth, maxDailyPosts }) => {
     }
   };
 
+  const hourDay = invertDayHour(dayHour);
+
   return (
     <div>
       <table cellSpacing="0" cellPadding="0" border="0">
@@ -60,11 +60,7 @@ const HeatmapPortraitStyle = ({ dayHour, screenWidth, maxDailyPosts }) => {
                 {i % 12 === 0 ? 12 : i % 12} {i < 12 ? "AM" : "PM"}
               </td>
               {hours.map((hour, j) => (
-                <GridSquare
-                  key={j}
-                  numPosts={hour}
-                  maxDailyPosts={maxDailyPosts}
-                />
+                <GridSquare key={j} numPosts={hour} maxDailyPosts={maxDailyPosts} />
               ))}
             </tr>
           ))}
