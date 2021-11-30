@@ -109,10 +109,6 @@ const FetchHeatmap = (props) => {
           };
         });
 
-        redditData.sort((a, b) => b.upvote_ratio - a.upvote_ratio);
-        redditData.sort((a_1, b_1) => parseInt(a_1.hour) - parseInt(b_1.hour));
-        redditData.sort((a_2, b_2) => parseInt(a_2.day) - parseInt(b_2.day));
-
         setIsLoading(false);
         if (redditData) setRedditSubmissions(redditData);
         else setRedditSubmissions(null);
