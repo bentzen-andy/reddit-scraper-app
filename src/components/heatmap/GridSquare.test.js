@@ -1,8 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import GridSquare from "./GridSquare";
 
-describe("number content of the grid squares", () => {
-  test("Renders a grid square with '-' if number of posts is 0", () => {
+describe("GridSquare Component: testing number of posts displayed", () => {
+  it("renders a grid square with '-' if number of posts is 0 - test_id: GridSquare_1", () => {
+    // Arrange
     const numPosts = 0;
     const maxDailyPosts = 1;
     render(
@@ -14,11 +15,16 @@ describe("number content of the grid squares", () => {
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const txt1 = screen.getByText(/-/);
     expect(txt1).toBeInTheDocument();
   });
 
-  test("Renders a grid square with 1 if number of posts is 1", () => {
+  it("renders a grid square with 1 if number of posts is 1 - test_id: GridSquare_2", () => {
+    // Arrange
     const numPosts = 1;
     const maxDailyPosts = 6;
     render(
@@ -30,11 +36,16 @@ describe("number content of the grid squares", () => {
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const txt1 = screen.getByText(/1/);
     expect(txt1).toBeInTheDocument();
   });
 
-  test("Renders a grid square with 2 if number of posts is 2", () => {
+  it("renders a grid square with 2 if number of posts is 2 - test_id: GridSquare_3", () => {
+    // Arrange
     const numPosts = 2;
     const maxDailyPosts = 6;
     render(
@@ -46,11 +57,16 @@ describe("number content of the grid squares", () => {
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const txt1 = screen.getByText(/2/);
     expect(txt1).toBeInTheDocument();
   });
 
-  test("Renders a grid square with 99 if number of posts is 99", () => {
+  it("renders a grid square with 99 if number of posts is 99 - test_id: GridSquare_4", () => {
+    // Arrange
     const numPosts = 99;
     const maxDailyPosts = 99;
     render(
@@ -62,13 +78,18 @@ describe("number content of the grid squares", () => {
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const txt1 = screen.getByText(/99/);
     expect(txt1).toBeInTheDocument();
   });
 });
 
-describe("CSS class of the grid square (css class determines the color)", () => {
-  test("Renders the lightest color with 0 posts", () => {
+describe("GridSquare Component: testing the class assigned to the <td> element", () => {
+  it("renders a <td> element with CSS class 'color-0' - test_id: GridSquare_5", () => {
+    // Arrange
     const numPosts = 0;
     const maxDailyPosts = 12;
     render(
@@ -80,6 +101,10 @@ describe("CSS class of the grid square (css class determines the color)", () => 
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/-/);
     expect(node.classList.contains("color-0")).toBe(true);
     expect(node.classList.contains("color-1")).toBe(false);
@@ -90,7 +115,8 @@ describe("CSS class of the grid square (css class determines the color)", () => 
     expect(node.classList.contains("color-6")).toBe(false);
   });
 
-  test("Renders the 'min-heat' color with 1 post", () => {
+  it("renders a <td> element with CSS class 'color-1' - test_id: GridSquare_6", () => {
+    // Arrange
     const numPosts = 1;
     const maxDailyPosts = 12;
     render(
@@ -102,6 +128,10 @@ describe("CSS class of the grid square (css class determines the color)", () => 
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/1/);
     expect(node.classList.contains("color-0")).toBe(false);
     expect(node.classList.contains("color-1")).toBe(true);
@@ -112,7 +142,8 @@ describe("CSS class of the grid square (css class determines the color)", () => 
     expect(node.classList.contains("color-6")).toBe(false);
   });
 
-  test("Renders the 'color-2' color with 2 posts", () => {
+  it("renders a <td> element with CSS class 'color-2' - test_id: GridSquare_7", () => {
+    // Arrange
     const numPosts = 2;
     const maxDailyPosts = 6;
     render(
@@ -124,6 +155,10 @@ describe("CSS class of the grid square (css class determines the color)", () => 
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/2/);
     expect(node.classList.contains("color-0")).toBe(false);
     expect(node.classList.contains("color-1")).toBe(false);
@@ -134,7 +169,8 @@ describe("CSS class of the grid square (css class determines the color)", () => 
     expect(node.classList.contains("color-6")).toBe(false);
   });
 
-  test("Renders the 'color-4' color with 4 posts", () => {
+  it("renders a <td> element with CSS class 'color-4' - test_id: GridSquare_8", () => {
+    // Arrange
     const numPosts = 4;
     const maxDailyPosts = 6;
     render(
@@ -146,6 +182,10 @@ describe("CSS class of the grid square (css class determines the color)", () => 
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/4/);
     expect(node.classList.contains("color-0")).toBe(false);
     expect(node.classList.contains("color-1")).toBe(false);
@@ -156,7 +196,8 @@ describe("CSS class of the grid square (css class determines the color)", () => 
     expect(node.classList.contains("color-6")).toBe(false);
   });
 
-  test("Renders the 'max-heat' color", () => {
+  it("renders a <td> element with CSS class 'color-6' - test_id: GridSquare_9", () => {
+    // Arrange
     const numPosts = 12;
     const maxDailyPosts = 12;
     render(
@@ -168,6 +209,10 @@ describe("CSS class of the grid square (css class determines the color)", () => 
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/12/);
     expect(node.classList.contains("color-0")).toBe(false);
     expect(node.classList.contains("color-1")).toBe(false);
@@ -179,8 +224,9 @@ describe("CSS class of the grid square (css class determines the color)", () => 
   });
 });
 
-describe("Rounding to correct color score'", () => {
-  test("Renders a grid square with class name color-1. ensure it it has at least one post that it rounds up to 1", () => {
+describe("GridSquare Component: Rounding to correct color score' - test_id: GridSquare_10", () => {
+  it("renders a <td> with class name color-1. Ensure it it has at least one post that the number used for the color class rounds up to 1", () => {
+    // Arrange
     const numPosts = 1;
     const maxDailyPosts = 99;
     render(
@@ -192,6 +238,10 @@ describe("Rounding to correct color score'", () => {
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/1/);
     expect(node.classList.contains("color-0")).toBe(false);
     expect(node.classList.contains("color-1")).toBe(true);
@@ -202,7 +252,8 @@ describe("Rounding to correct color score'", () => {
     expect(node.classList.contains("color-6")).toBe(false);
   });
 
-  test("Renders a grid square with class name color-2 to make sure it can round up properly", () => {
+  it("renders a grid square with class name color-2 to make sure it can round up properly - test_id: GridSquare_11", () => {
+    // Arrange
     const numPosts = 3;
     const maxDailyPosts = 11;
     render(
@@ -214,6 +265,10 @@ describe("Rounding to correct color score'", () => {
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/3/);
     expect(node.classList.contains("color-0")).toBe(false);
     expect(node.classList.contains("color-1")).toBe(false);
@@ -224,7 +279,8 @@ describe("Rounding to correct color score'", () => {
     expect(node.classList.contains("color-6")).toBe(false);
   });
 
-  test("Renders a grid square with class name color-2 to make sure it can round down properly", () => {
+  it("renders a grid square with class name color-2 to make sure it can round down properly - test_id: GridSquare_12", () => {
+    // Arrange
     const numPosts = 4;
     const maxDailyPosts = 11;
     render(
@@ -236,6 +292,10 @@ describe("Rounding to correct color score'", () => {
         </tbody>
       </table>
     );
+
+    // Act ...
+
+    // Assert
     const node = screen.getByText(/4/);
     expect(node.classList.contains("color-0")).toBe(false);
     expect(node.classList.contains("color-1")).toBe(false);

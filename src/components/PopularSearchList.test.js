@@ -2,34 +2,50 @@ import { render, screen } from "@testing-library/react";
 import PopularSearchList from "./PopularSearchList";
 
 describe("Tests for the list content in the PopularSearchList", () => {
-  test("Renders 'no data' message if null data is provided", () => {
+  it("renders 'no data' message if null data is provided - test_id: PopularSearchList_1", () => {
+    // Arrange
     const data = null;
     render(<PopularSearchList data={data} />);
+
+    // Act ...
+
+    // Assert
     const txt1 = screen.getByText(/Popular Searches/g);
     const txt2 = screen.getByText(/no data.../g);
     expect(txt1).toBeInTheDocument();
     expect(txt2).toBeInTheDocument();
   });
 
-  test("Renders 'no data' message if empty array is provided", () => {
+  it("renders 'no data' message if empty array is provided - test_id: PopularSearchList_2", () => {
+    // Arrange
     const data = [];
     render(<PopularSearchList data={data} />);
+
+    // Act ...
+
+    // Assert
     const txt1 = screen.getByText(/Popular Searches/g);
     const txt2 = screen.getByText(/no data.../g);
     expect(txt1).toBeInTheDocument();
     expect(txt2).toBeInTheDocument();
   });
 
-  test("Renders 1 supbreddit when only 1 is provided", () => {
+  it("renders 1 supbreddit when only 1 is provided - test_id: PopularSearchList_3", () => {
+    // Arrange
     const data = [{ subreddit: "askreddit", count: 1 }];
     render(<PopularSearchList data={data} />);
+
+    // Act ...
+
+    // Assert
     const txt1 = screen.getByText(/Popular Searches/g);
     const txt2 = screen.getByText(/askreddit/g);
     expect(txt1).toBeInTheDocument();
     expect(txt2).toBeInTheDocument();
   });
 
-  test("Renders 6 supbreddit when 6 are provided", () => {
+  it("renders 6 supbreddits when 6 are provided - test_id: PopularSearchList_4", () => {
+    // Arrange
     const data = [
       { subreddit: "askreddit", count: 4 },
       { subreddit: "pics", count: 6 },
@@ -39,6 +55,10 @@ describe("Tests for the list content in the PopularSearchList", () => {
       { subreddit: "birdswitharms", count: 1 },
     ];
     render(<PopularSearchList data={data} />);
+
+    // Act ...
+
+    // Assert
     const txt = screen.getByText(/Popular Searches/g);
     const txt1 = screen.getByText(/askreddit/g);
     const txt2 = screen.getByText(/pics/g);
