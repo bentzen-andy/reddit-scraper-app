@@ -15,9 +15,8 @@ const FetchHeatmap = (props) => {
   // made up of explicit material.
   // ----------------------------------------
   const isExplicitContent = (data) => {
-    return data.data.children
-      .map((item) => item.data.over_18)
-      .every((val) => val === true);
+    if (!data.data.children || data.data.children.length === 0) return false;
+    return data.data.children.map((item) => item.data.over_18).every((val) => val === true);
   };
 
   // ========================================
@@ -118,6 +117,25 @@ const FetchHeatmap = (props) => {
         setError(`Error: No data available for subreddit: "${props.subreddit}"`);
       });
   }, [props.subreddit]);
+
+  // ========================================
+  // HTTP Request
+  // Sends the subreddit search to the sever so we can track popular searches
+  // ----------------------------------------
+  useEffect(() => {
+    if (redditSubmissions && redditSubmissions.length > 0) {
+      fetch("https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json", {
+        method: "POST",
+        body: JSON.stringify({
+          subreddit: redditSubmissions[0].subreddit.toLowerCase(),
+          count: 1,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    }
+  }, [redditSubmissions]);
 
   return getHttpResponse(props.subreddit);
 };

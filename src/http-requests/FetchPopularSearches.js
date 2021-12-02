@@ -53,25 +53,6 @@ const FetchPopularSearches = (props) => {
 
   // ========================================
   // HTTP Request
-  // Sends the subreddit search to the sever so we can track popular searches
-  // ----------------------------------------
-  useEffect(() => {
-    if (props.subreddit && props.subreddit.length > 0) {
-      fetch("https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json", {
-        method: "POST",
-        body: JSON.stringify({
-          subreddit: props.subreddit,
-          count: 1,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-    }
-  }, [props.subreddit]);
-
-  // ========================================
-  // HTTP Request
   // Gets a list of popular searches to display to the user as suggestions.
   // ----------------------------------------
   useEffect(() => {
