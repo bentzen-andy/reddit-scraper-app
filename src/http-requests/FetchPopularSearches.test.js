@@ -1,4 +1,5 @@
-import { render, unmountComponentAtNode } from "react-dom";
+import ReactDOM from "react-dom";
+import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 import FetchPopularSearches from "./FetchPopularSearches";
 
@@ -11,7 +12,7 @@ beforeEach(() => {
 
 afterEach(() => {
   // cleanup on exiting
-  unmountComponentAtNode(container);
+  ReactDOM.unmountComponentAtNode(container);
   container.remove();
   container = null;
 });
@@ -46,7 +47,7 @@ describe("Tests for the popular search list", () => {
     // Act
     // Use the asynchronous version of act to apply resolved promises
     await act(async () => {
-      render(<FetchPopularSearches subreddit={""} />, container);
+      ReactDOM.render(<FetchPopularSearches subreddit={""} />, container);
     });
 
     // Assert
@@ -85,7 +86,7 @@ describe("Tests for the popular search list", () => {
     // Act
     // Use the asynchronous version of act to apply resolved promises
     await act(async () => {
-      render(<FetchPopularSearches subreddit={""} />, container);
+      ReactDOM.render(<FetchPopularSearches subreddit={""} />, container);
     });
 
     // Assert
@@ -123,7 +124,7 @@ describe("Tests for the popular search list", () => {
     // Act
     // Use the asynchronous version of act to apply resolved promises
     await act(async () => {
-      render(<FetchPopularSearches subreddit={""} />, container);
+      ReactDOM.render(<FetchPopularSearches subreddit={""} />, container);
     });
 
     // Assert
@@ -159,7 +160,7 @@ describe("Tests for the popular search list", () => {
     // Act
     // Use the asynchronous version of act to apply resolved promises
     await act(async () => {
-      render(<FetchPopularSearches subreddit={""} />, container);
+      ReactDOM.render(<FetchPopularSearches subreddit={""} />, container);
     });
 
     // Assert
@@ -185,7 +186,7 @@ describe("Tests for the popular search list", () => {
     // Act
     // Use the asynchronous version of act to apply resolved promises
     await act(async () => {
-      render(<FetchPopularSearches subreddit={""} />, container);
+      ReactDOM.render(<FetchPopularSearches subreddit={""} />, container);
     });
 
     // Assert
@@ -211,7 +212,7 @@ describe("Tests for the popular search list", () => {
     // Act
     // Use the asynchronous version of act to apply resolved promises
     await act(async () => {
-      render(<FetchPopularSearches subreddit={""} />, container);
+      ReactDOM.render(<FetchPopularSearches subreddit={""} />, container);
     });
 
     // Assert
@@ -251,7 +252,7 @@ describe("Tests for the popular search list", () => {
     // Act
     // Use the asynchronous version of act to apply resolved promises
     await act(async () => {
-      render(<FetchPopularSearches subreddit={""} />, container);
+      ReactDOM.render(<FetchPopularSearches subreddit={""} />, container);
     });
 
     // Assert
@@ -268,3 +269,19 @@ describe("Tests for the popular search list", () => {
     global.fetch.mockRestore();
   });
 });
+// --------------------------------------------------------------------------------------------
+
+// ============================================================================================
+describe("Tests for the loading spinner", () => {
+  it("renders a loading spinner while HTTP request is processing - test_id: FetchPopularSearches_5", async () => {
+    // Arrange
+    render(<FetchPopularSearches onEnteredSubreddit={() => {}} />);
+
+    // Act ...
+
+    // Assert
+    const loadingSpinner = await screen.findByTitle("loading-spinner");
+    expect(loadingSpinner).toBeInTheDocument();
+  });
+});
+// --------------------------------------------------------------------------------------------
