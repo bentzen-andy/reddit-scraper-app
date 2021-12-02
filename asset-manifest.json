@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/reddit-scraper-app/static/css/main.c3df4037.chunk.css",
-    "main.js": "/reddit-scraper-app/static/js/main.51fe80d0.chunk.js",
-    "main.js.map": "/reddit-scraper-app/static/js/main.51fe80d0.chunk.js.map",
+    "main.js": "/reddit-scraper-app/static/js/main.761bc23a.chunk.js",
+    "main.js.map": "/reddit-scraper-app/static/js/main.761bc23a.chunk.js.map",
     "runtime-main.js": "/reddit-scraper-app/static/js/runtime-main.3d466608.js",
     "runtime-main.js.map": "/reddit-scraper-app/static/js/runtime-main.3d466608.js.map",
     "static/js/2.41b9276f.chunk.js": "/reddit-scraper-app/static/js/2.41b9276f.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3d466608.js",
     "static/js/2.41b9276f.chunk.js",
     "static/css/main.c3df4037.chunk.css",
-    "static/js/main.51fe80d0.chunk.js"
+    "static/js/main.761bc23a.chunk.js"
   ]
 }
