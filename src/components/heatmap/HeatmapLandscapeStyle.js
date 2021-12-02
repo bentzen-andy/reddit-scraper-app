@@ -2,19 +2,11 @@ import React from "react";
 import GridSquare from "./GridSquare";
 
 const HeatmapLandscapeStyle = ({ dayHour, maxDailyPosts }) => {
-  const week = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
   return (
     <div>
-      <table cellSpacing="0" cellPadding="0" border="0">
+      <table className="heatmap" cellSpacing="0" cellPadding="0" border="0">
         <thead>
           <tr>
             <th></th>

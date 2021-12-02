@@ -51,7 +51,7 @@ const HeatmapPortraitStyle = ({ dayHour, screenWidth, maxDailyPosts }) => {
 
   return (
     <div>
-      <table cellSpacing="0" cellPadding="0" border="0">
+      <table className="heatmap" cellSpacing="0" cellPadding="0" border="0">
         <thead>{getDaysOfWeek()}</thead>
         <tbody>
           {hourDay.map((hours, i) => (
