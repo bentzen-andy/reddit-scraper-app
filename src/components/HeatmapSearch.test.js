@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+
 import HeatmapSearch from "./HeatmapSearch";
 
 // ============================================================================================
@@ -19,6 +20,11 @@ describe("Tests for the heatmap under default starting conditions", () => {
   it("renders a heatmap with a valid subreddit as input - test_id: HeatmapSearch_1", async () => {
     // Arrange
     const { container } = render(<HeatmapSearch onEnteredSubreddit={() => {}} />);
+
+    // ensure the heatmap table is not present at the time the page loads
+    const onLoadTableElement = screen.queryByRole("table");
+    expect(onLoadTableElement).not.toBeInTheDocument();
+
     const savedFetch = window.fetch;
     window.fetch = jest.fn();
     window.fetch.mockResolvedValueOnce({
@@ -40,6 +46,7 @@ describe("Tests for the heatmap under default starting conditions", () => {
     // Assert
     const tableElement = await screen.findByRole("table");
     const tableDataElements = tableElement.querySelectorAll("td");
+
     // confirm that it rendered a table
     expect(tableElement).toBeInTheDocument();
     // confirm that the table has the correct number of cells (<td> elements)
@@ -87,6 +94,7 @@ describe("Tests for the searchbar", () => {
 
     // Assert
     const buttonElement = container.getElementsByClassName("searchbar__btn")[0];
+    expect(buttonElement).toBeInTheDocument();
     expect(buttonElement.disabled).toBe(true);
   });
 
@@ -135,7 +143,9 @@ describe("Tests for the searchbar", () => {
     typeSomethingIntoTheFormAndClickSubmit("uiofjewioewjklf", container);
 
     // Assert
-    const textElement = await screen.findByText(/Error: No data available for subreddit/i);
+    const textElement = await screen.findByText(
+      /Error: No data available for subreddit/i
+    );
     expect(textElement).toBeInTheDocument();
   });
 
@@ -178,6 +188,21 @@ describe("Tests for the searchbar", () => {
 
     // test stub
     expect(true).toBe(true);
+  });
+});
+// --------------------------------------------------------------------------------------------
+
+// ============================================================================================
+describe("Tests for the loading spinner", () => {
+  it("renders a loading spinner while HTTP request is processing - test_id: HeatmapSearch_18", async () => {
+    // Arrange
+    const { container } = render(<HeatmapSearch onEnteredSubreddit={() => {}} />);
+
+    // Act
+    typeSomethingIntoTheFormAndClickSubmit("videos", container);
+    // Assert
+    const loadingSpinner = await screen.findByTitle("loading-spinner");
+    expect(loadingSpinner).toBeInTheDocument();
   });
 });
 // --------------------------------------------------------------------------------------------
