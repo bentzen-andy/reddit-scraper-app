@@ -17,6 +17,12 @@
   border-bottom: solid grey 1px;
 }
 
+.popular-search-list__no-data {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
 /* Screen size breakpoints according to freecodecamp.com */
 /* https://www.freecodecamp.org/news/css-media-queries-breakpoints-media-types-standard-resolutions-and-more/ */
 
