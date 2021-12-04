@@ -16,7 +16,9 @@ const FetchHeatmap = (props) => {
   // ----------------------------------------
   const isExplicitContent = (data) => {
     if (!data.data.children || data.data.children.length === 0) return false;
-    return data.data.children.map((item) => item.data.over_18).every((val) => val === true);
+    return data.data.children
+      .map((item) => item.data.over_18)
+      .every((val) => val === true);
   };
 
   // ========================================

@@ -57,7 +57,6 @@ const FetchPopularSearches = (props) => {
   // ----------------------------------------
   useEffect(() => {
     setIsLoading(true);
-
     fetch("https://reddit-scraper-app-default-rtdb.firebaseio.com/subreddits.json")
       .then((response) => response.json())
       .then((data) => {
@@ -65,16 +64,10 @@ const FetchPopularSearches = (props) => {
           setIsLoading(false);
           return;
         }
-
-        let subreddits = {};
-        subreddits = getSubredditCounts(data);
-
-        let popularSearches = [];
-        popularSearches = getArrayFromObject(subreddits);
-
+        let subreddits = getSubredditCounts(data);
+        let popularSearches = getArrayFromObject(subreddits);
         popularSearches.sort((a, b) => b.count - a.count);
         popularSearches.splice(5, popularSearches.length);
-
         setIsLoading(false);
         setPopularSearches(popularSearches);
       })
