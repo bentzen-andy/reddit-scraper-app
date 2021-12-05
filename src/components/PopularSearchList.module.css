@@ -16,7 +16,13 @@
   padding: 1rem;
   border-bottom: solid grey 1px;
 }
-
+.popular-search-list__subreddit span:hover,
+.popular-search-list__subreddit span:active {
+  display: inline;
+  font-weight: 700;
+  cursor: pointer;
+  color: #6200ee;
+}
 .popular-search-list__no-data {
   font-family: "Roboto", sans-serif;
   font-weight: 400;

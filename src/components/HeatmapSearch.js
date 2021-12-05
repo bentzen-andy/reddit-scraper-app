@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SearchBar from "./SearchBar";
 import FetchHeatmapData from "../http-requests/FetchHeatmapData";
 
@@ -9,6 +9,10 @@ const HeatmapSearch = (props) => {
     setSubreddit(sub);
     props.onEnteredSubreddit(sub);
   };
+
+  useEffect(() => {
+    setSubreddit(props.subreddit);
+  }, [props.subreddit]);
 
   return (
     <React.Fragment>

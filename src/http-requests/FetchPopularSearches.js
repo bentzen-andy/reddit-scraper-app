@@ -48,7 +48,12 @@ const FetchPopularSearches = (props) => {
   const getHttpResponse = () => {
     if (isLoading) return <TailSpin color="#6200ee" />;
     if (error) return <ErrorMessage msg={error} />;
-    return <PopularSearchList data={popularSearches} />;
+    return (
+      <PopularSearchList
+        data={popularSearches}
+        onEnteredSubreddit={props.onEnteredSubreddit}
+      />
+    );
   };
 
   // ========================================

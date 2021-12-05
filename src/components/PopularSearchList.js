@@ -2,13 +2,18 @@ import React from "react";
 import styles from "./PopularSearchList.module.css";
 
 const PopularSearchList = (props) => {
+  const clickHandler = (event) => {
+    let subreddit = event.target.firstChild.data;
+    props.onEnteredSubreddit(subreddit);
+  };
+
   const getSubredditList = () => {
     if (!props.data || props.data.length === 0)
       return <p className={styles["popular-search-list__no-data"]}>no data...</p>;
     else {
       return props.data.map((item) => (
         <div className={styles["popular-search-list__subreddit"]} key={item.subreddit}>
-          {item.subreddit}
+          <span onClick={clickHandler}>{item.subreddit}</span>
         </div>
       ));
     }

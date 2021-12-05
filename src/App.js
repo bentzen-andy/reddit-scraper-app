@@ -16,8 +16,8 @@ const App = () => {
     <div className={styles["app"]}>
       <Navbar />
       <Instructions />
-      <HeatmapSearch onEnteredSubreddit={handleSubreddit} />
-      <FetchPopularSearches subreddit={subreddit} />
+      <HeatmapSearch subreddit={subreddit} onEnteredSubreddit={handleSubreddit} />
+      <FetchPopularSearches subreddit={subreddit} onEnteredSubreddit={handleSubreddit} />
     </div>
   );
 };
