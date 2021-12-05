@@ -13,7 +13,9 @@ const PopularSearchList = (props) => {
     else {
       return props.data.map((item) => (
         <div className={styles["popular-search-list__subreddit"]} key={item.subreddit}>
-          <span onClick={clickHandler}>{item.subreddit}</span>
+          <span onClick={clickHandler} onTouchEnd={clickHandler}>
+            {item.subreddit}
+          </span>
         </div>
       ));
     }
