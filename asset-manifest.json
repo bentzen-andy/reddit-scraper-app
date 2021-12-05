@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/reddit-scraper-app/static/css/main.c3df4037.chunk.css",
-    "main.js": "/reddit-scraper-app/static/js/main.b72a3a0a.chunk.js",
-    "main.js.map": "/reddit-scraper-app/static/js/main.b72a3a0a.chunk.js.map",
+    "main.css": "/reddit-scraper-app/static/css/main.3ccc9f4d.chunk.css",
+    "main.js": "/reddit-scraper-app/static/js/main.b057f43d.chunk.js",
+    "main.js.map": "/reddit-scraper-app/static/js/main.b057f43d.chunk.js.map",
     "runtime-main.js": "/reddit-scraper-app/static/js/runtime-main.3d466608.js",
     "runtime-main.js.map": "/reddit-scraper-app/static/js/runtime-main.3d466608.js.map",
     "static/js/2.41b9276f.chunk.js": "/reddit-scraper-app/static/js/2.41b9276f.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.dd708f43.chunk.js": "/reddit-scraper-app/static/js/3.dd708f43.chunk.js",
     "static/js/3.dd708f43.chunk.js.map": "/reddit-scraper-app/static/js/3.dd708f43.chunk.js.map",
     "index.html": "/reddit-scraper-app/index.html",
-    "static/css/main.c3df4037.chunk.css.map": "/reddit-scraper-app/static/css/main.c3df4037.chunk.css.map",
+    "static/css/main.3ccc9f4d.chunk.css.map": "/reddit-scraper-app/static/css/main.3ccc9f4d.chunk.css.map",
     "static/js/2.41b9276f.chunk.js.LICENSE.txt": "/reddit-scraper-app/static/js/2.41b9276f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3d466608.js",
     "static/js/2.41b9276f.chunk.js",
-    "static/css/main.c3df4037.chunk.css",
-    "static/js/main.b72a3a0a.chunk.js"
+    "static/css/main.3ccc9f4d.chunk.css",
+    "static/js/main.b057f43d.chunk.js"
   ]
 }
