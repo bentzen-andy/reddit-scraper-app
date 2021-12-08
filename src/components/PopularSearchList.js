@@ -6,7 +6,6 @@ const PopularSearchList = (props) => {
     let subreddit;
     if (event.type === "touchend") subreddit = event.target.firstChild.firstChild.data;
     if (event.type === "click") subreddit = event.target.firstChild.data;
-    console.log(subreddit);
     props.onEnteredSubreddit(subreddit);
   };
 
